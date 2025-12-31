@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'my_classes_screen.dart';
+import '../widgets/meeting_detail_sheet.dart';
 
 class ClassDetailScreen extends StatelessWidget {
   final String courseName;
@@ -182,57 +183,72 @@ class MeetingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                decoration: BoxDecoration(
-                  color: Colors.blue[400],
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Text(
-                  'Pertemuan $meetingNumber',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
+    return GestureDetector(
+      onTap: () {
+        showModalBottomSheet(
+          context: context,
+          isScrollControlled: true, // Allow full height
+          backgroundColor: Colors.transparent,
+          builder: (context) => DraggableScrollableSheet(
+            initialChildSize: 0.9,
+            minChildSize: 0.5,
+            maxChildSize: 0.95,
+            builder: (_, controller) => MeetingDetailSheet(title: title),
+          ),
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 12),
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: Colors.blue[400],
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Text(
+                    'Pertemuan $meetingNumber',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-              ),
-              Icon(
-                Icons.check_circle,
-                color: isCompleted ? Colors.green : Colors.grey[400],
-              ),
-            ],
-          ),
-          const SizedBox(height: 12),
-          Text(
-            '${meetingNumber.toString().padLeft(2, '0')} - $title',
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+                Icon(
+                  Icons.check_circle,
+                  color: isCompleted ? Colors.green : Colors.grey[400],
+                ),
+              ],
             ),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            subtitle,
-            style: TextStyle(
-              fontSize: 12,
-              color: Colors.grey[600],
+            const SizedBox(height: 12),
+            Text(
+              '${meetingNumber.toString().padLeft(2, '0')} - $title',
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-        ],
+            const SizedBox(height: 12),
+            Text(
+              subtitle,
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.grey[600],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
