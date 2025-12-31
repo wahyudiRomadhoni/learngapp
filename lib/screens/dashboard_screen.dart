@@ -3,6 +3,7 @@ import '../widgets/header_section.dart';
 import '../screens/announcement_screen.dart';
 import '../widgets/class_progress_card.dart';
 import '../screens/my_classes_screen.dart';
+import '../screens/profile_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -36,17 +37,28 @@ class DashboardScreen extends StatelessWidget {
                   style: TextStyle(color: Colors.white, fontSize: 12),
                 ),
                 const SizedBox(width: 8),
-                Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: const Icon(
-                    Icons.person,
-                    color: Colors.white,
-                    size: 20,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ProfileScreen()),
+                    );
+                  },
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.2),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: ClipOval(
+                      child: Image.asset(
+                        'assets/profile_wahyudi.png',
+                        fit: BoxFit.cover,
+                        width: 40,
+                        height: 40,
+                      ),
+                    ),
                   ),
                 ),
               ],
