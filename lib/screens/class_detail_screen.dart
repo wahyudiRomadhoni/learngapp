@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'my_classes_screen.dart';
 import '../widgets/meeting_detail_sheet.dart';
+import 'quiz_screen.dart';
+import 'assignment_detail_screen.dart';
 
 class ClassDetailScreen extends StatelessWidget {
   final String courseName;
@@ -272,20 +274,39 @@ class AssignmentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
+    return GestureDetector(
+      onTap: () {
+        // Simple logic to check if this is the quiz to open
+        if (title == 'Quiz Review 01') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const QuizScreen(),
+            ),
+          );
+        } else if (title.contains('Tugas 01')) {
+           Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const AssignmentDetailScreen(),
+            ),
+          );
+        }
+      },
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 12),
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 4,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -344,6 +365,7 @@ class AssignmentCard extends StatelessWidget {
             ),
           ),
         ],
+      ),
       ),
     );
   }
