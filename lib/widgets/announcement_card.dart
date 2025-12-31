@@ -12,7 +12,10 @@ class AnnouncementCard extends StatelessWidget {
     required this.date,
     required this.author,
     required this.content,
+    this.deadline,
   });
+
+  final String? deadline;
 
   @override
   Widget build(BuildContext context) {
@@ -104,6 +107,33 @@ class AnnouncementCard extends StatelessWidget {
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
             ),
+            if (deadline != null) ...[
+              const SizedBox(height: 12),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(
+                  color: Colors.red.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: Colors.red.withOpacity(0.5)),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Icons.access_time_rounded,
+                        size: 16, color: Colors.red),
+                    const SizedBox(width: 8),
+                    Text(
+                      'Tenggat: $deadline',
+                      style: const TextStyle(
+                        color: Colors.red,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ],
         ),
       ),

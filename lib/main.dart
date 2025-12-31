@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/main_screen.dart';
 import 'constants.dart';
+import 'screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Roboto',
       ),
-      home: const MainScreen(),
+      home: const LoginScreen(),
     );
   }
 }

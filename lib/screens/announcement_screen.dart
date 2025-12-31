@@ -33,6 +33,14 @@ class AnnouncementScreen extends StatelessWidget {
                 content:
                     'Perkuliahan pengganti akan dilaksanakan pada hari Kamis pukul 13.00 WIB di ruang Lab Komputer 2. Harap hadir tepat waktu.',
               ),
+              const AnnouncementCard(
+                title: 'TUGAS BESAR - DEADLINE',
+                date: 'Jumat, 1 Nov',
+                author: 'Tim Dosen',
+                content:
+                    'Pengumpulan Tugas Besar Tahap 1 paling lambat hari Jumat pukul 23.59 WIB melalui iGracias. Jangan lupa lampirkan laporan dalam format PDF.',
+                deadline: '1 Nov 2025, 23:59',
+              ),
             ],
           ),
         ),
