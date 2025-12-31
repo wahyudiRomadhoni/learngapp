@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/header_section.dart';
 import '../screens/announcement_screen.dart';
 import '../widgets/class_progress_card.dart';
+import '../screens/my_classes_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -202,6 +203,39 @@ class DashboardScreen extends StatelessWidget {
             const SizedBox(height: 20),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: const Color(0xFFC62828), // Red when selected
+        unselectedItemColor: Colors.grey, // Grey when unselected
+        backgroundColor: Colors.white, // White background
+        elevation: 10,
+        type: BottomNavigationBarType.fixed,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined), 
+            activeIcon: Icon(Icons.home),
+            label: 'Home'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school_outlined), 
+            activeIcon: Icon(Icons.school),
+            label: 'Kelas Saya'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notifications_outlined), 
+            activeIcon: Icon(Icons.notifications),
+            label: 'Notifikasi'
+          ),
+        ],
+        currentIndex: 0, // 'Home' is selected
+        onTap: (index) {
+          if (index == 1) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const MyClassesScreen()),
+            );
+          }
+        },
       ),
     );
   }
