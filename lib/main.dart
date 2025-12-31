@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'screens/main_screen.dart';
 import 'constants.dart';
 import 'screens/login_screen.dart';
 
@@ -30,4 +29,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
