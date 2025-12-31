@@ -4,6 +4,7 @@ import '../screens/announcement_screen.dart';
 import '../widgets/class_progress_card.dart';
 import '../screens/my_classes_screen.dart';
 import '../screens/profile_screen.dart';
+import '../screens/notification_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -245,6 +246,11 @@ class DashboardScreen extends StatelessWidget {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const MyClassesScreen()),
+            );
+          } else if (index == 2) {
+             Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const NotificationScreen()),
             );
           }
         },
